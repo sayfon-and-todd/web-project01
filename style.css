@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#animation-container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  cursor: pointer;
+}
