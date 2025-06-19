@@ -1,6 +1,6 @@
 window.onload = function () {
   const animation = bodymovin.loadAnimation({
-    container: document.getElementById('bm'),
+    container: document.getElementById('animation-container'),
     renderer: 'svg',
     loop: false,
     autoplay: true,
