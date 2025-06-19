@@ -4,7 +4,7 @@ window.onload = function () {
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    path: 'bridge_button.json', // make sure the path is correct
+    path: 'animation.json', // make sure the path is correct
   });
 
   animation.addEventListener('DOMLoaded', () => {
