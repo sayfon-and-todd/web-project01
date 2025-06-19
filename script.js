@@ -8,7 +8,7 @@ window.onload = function () {
   });
 
   animation.addEventListener('DOMLoaded', () => {
-    const svg = document.querySelector('#bm svg');
+    const svg = document.querySelector('#animation-container svg');
     const group = svg?.querySelector('#button-bridge');
 
     if (group) {
