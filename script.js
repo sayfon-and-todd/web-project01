@@ -1,16 +1,26 @@
-animation.addEventListener('DOMLoaded', () => {
-  const svg = animationContainer.querySelector('svg');
-  const group = svg.querySelector('#button-bridge');
+window.onload = function () {
+  const animation = bodymovin.loadAnimation({
+    container: document.getElementById('bm'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: 'bridge_button.json',
+  });
 
-  if (group) {
-    group.style.cursor = 'pointer';
-    group.style.pointerEvents = 'all';
+  animation.addEventListener('DOMLoaded', () => {
+    const svg = document.querySelector('#bm svg');
+    const group = svg?.querySelector('#button-bridge');
 
-    group.addEventListener('click', event => {
-      console.log('CTA clicked on path:', event.target.nodeName);
-      window.location.href = 'https://example.com';
-    });
-  } else {
-    console.error('button-bridge group not found');
-  }
-});
+    if (group) {
+      group.style.cursor = 'pointer';
+      group.style.pointerEvents = 'all';
+
+      group.addEventListener('click', () => {
+        console.log('CTA clicked');
+        window.location.href = 'https://example.com';
+      });
+    } else {
+      console.warn('button-bridge group not found');
+    }
+  });
+};
