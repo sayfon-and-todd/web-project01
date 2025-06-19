@@ -13,3 +13,9 @@ body {
   position: relative;
   cursor: pointer;
 }
+
+
+#button-bridge {
+  cursor: pointer;
+  pointer-events: all;
+}
