@@ -1,26 +1,25 @@
-window.onload = function () {
-  const animation = bodymovin.loadAnimation({
-    container: document.getElementById('animation-container'), // ✅ your actual container
-    renderer: 'svg',
-    loop: false,
-    autoplay: true,
-    path: 'animation.json', // make sure the path is correct
-  });
+const animationContainer = document.getElementById('animation-container');
 
-  animation.addEventListener('DOMLoaded', () => {
-    const svg = document.querySelector('#animation-container svg');
-    const group = svg?.querySelector('#button-bridge');
+const animation = lottie.loadAnimation({
+  container: animationContainer,
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  path: 'animation.json', // This should be in your project folder
+});
 
-    if (group) {
-      group.style.cursor = 'pointer';
-      group.style.pointerEvents = 'auto';
+// Add interactivity to a specific layer inside the Lottie
+animation.addEventListener('DOMLoaded', () => {
+  const svg = animationContainer.querySelector('svg');
+  const targetLayer = svg.querySelector('#button-bridge');
 
-      group.addEventListener('click', () => {
-        console.log('Bridge button clicked!');
-        animation.playSegments([30, 60], true); // Replace with your actual frames
-      });
-    } else {
-      console.warn('button-bridge not found in SVG');
-    }
-  });
-};
+  if (targetLayer) {
+    targetLayer.style.cursor = 'pointer';
+    targetLayer.addEventListener('click', () => {
+      // Replace with your own CTA action
+      window.location.href = 'https://example.com';
+    });
+  } else {
+    console.warn('CTA layer not found: button-bridge');
+  }
+});
