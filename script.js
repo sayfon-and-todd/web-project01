@@ -1,10 +1,10 @@
 window.onload = function () {
   const animation = bodymovin.loadAnimation({
-    container: document.getElementById('animation-container'),
+    container: document.getElementById('animation-container'), // ✅ your actual container
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    path: 'bridge_button.json',
+    path: 'bridge_button.json', // make sure the path is correct
   });
 
   animation.addEventListener('DOMLoaded', () => {
@@ -14,12 +14,13 @@ window.onload = function () {
     if (group) {
       group.style.cursor = 'pointer';
       group.style.pointerEvents = 'auto';
+
       group.addEventListener('click', () => {
-        console.log('Clicked!');
-        animation.playSegments([30, 60], true);
+        console.log('Bridge button clicked!');
+        animation.playSegments([30, 60], true); // Replace with your actual frames
       });
     } else {
-      console.warn('button-bridge not found');
+      console.warn('button-bridge not found in SVG');
     }
   });
 };
