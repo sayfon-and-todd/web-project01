@@ -1,21 +1,25 @@
-const animationContainer = document.getElementById('animation-container');
+window.onload = function () {
+  const animation = bodymovin.loadAnimation({
+    container: document.getElementById('bm'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: 'bridge_button.json',
+  });
 
-const animation = lottie.loadAnimation({
-  container: animationContainer,
-  renderer: 'svg',
-  loop: true,
-  autoplay: true,
-  path: 'animation.json', // This should be in your project folder
-});
+  animation.addEventListener('DOMLoaded', () => {
+    const svg = document.querySelector('#bm svg');
+    const group = svg?.querySelector('#button-bridge');
 
-const player = document.getElementById('animation');
-player.addEventListener('DOMLoaded', () => {
-  const svgDoc = player.shadowRoot || player.contentDocument;
-  const btn = svgDoc.getElementById('button-bridge');
-  if (btn) {
-    btn.style.cursor = 'pointer';
-    btn.addEventListener('click', () => {
-      player.playSegments([startFrame, endFrame], true);
-    });
-  }
-});
+    if (group) {
+      group.style.cursor = 'pointer';
+      group.style.pointerEvents = 'auto';
+      group.addEventListener('click', () => {
+        console.log('Clicked!');
+        animation.playSegments([30, 60], true);
+      });
+    } else {
+      console.warn('button-bridge not found');
+    }
+  });
+};
